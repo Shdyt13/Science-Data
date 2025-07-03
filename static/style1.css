@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Body Styling */
+body {
+    background-color: #E5E5EA; /* Light Gray */
+    color: #000000; /* Black */
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #87CEEB; /* Bright Blue */
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(135, 206, 235, 0.5);
+}
+
+/* Section Titles */
+.results-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000000; /* Black */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+
+
+/* Form Styling */
+form {
+    background: linear-gradient(145deg, #FFFFFF, #E5E5EA); /* Gradient from White to Light Gray */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+label {
+    font-size: 1.3rem;
+    color: #000000; /* Black */
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    border: 2px solid #000000; /* Black */
+    border-radius: 10px;
+    background: #FFFFFF; /* White */
+    color: #000000; /* Black */
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus,
+input[type="file"]:focus {
+    border-color: #87CEEB; /* Bright Blue */
+    box-shadow: 0 0 10px #87CEEB;
+    background: #F0F8FF; /* Light Blue Tint */
+}
+
+input[type="submit"] {
+    background-color: #87CEEB; /* Bright Blue */
+    color: #FFFFFF; /* White */
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4682B4; /* Steel Blue */
+    transform: scale(1.1);
+    box-shadow: 0px 6px 20px rgba(135, 206, 235, 0.5);
+}
+
+/* Results Section Styling */
+.results-container {
+    background: linear-gradient(145deg, #E5E5EA, #FFFFFF); /* Gradient from Light Gray to White */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.result-box {
+    text-align: center;
+    display: inline-block;
+    margin: 20px auto;
+    padding-bottom: 20px; /* Menambahkan jarak bawah */
+}
+
+.result-card {
+    background: #F0F0F0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 500px; /* Menentukan panjang box */
+    margin: 0 auto 5px; /* Menambahkan jarak bawah antar box */
+}
+
+.result-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.result-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    color: #333333;
+    font-weight: bold;
+}
+
+.result-description {
+    margin: 20px auto; /* Memberikan jarak vertikal */
+    padding: 15px; /* Memberikan ruang dalam teks */
+    max-width: 600px; /* Membatasi lebar teks */
+    text-align: center; /* Menjaga teks tetap rata tengah */
+    background: #F8F8F8; /* Opsional: Memberikan latar belakang ringan */
+    border: 2px solid #CCCCCC; /* Opsional: Tambahkan border */
+    border-radius: 10px; /* Opsional: Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opsional: Efek bayangan */
+    font-size: 1.2rem; /* Ukuran teks */
+    color: #333333; /* Warna teks */
+    font-weight: bold;
+}
+
+
+h3, p {
+    text-align: center;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px 0;
+    background-color: #333333; /* Dark Gray */
+    color: #FFFFFF; /* White */
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Button Alignment */
+form input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .results-title {
+        font-size: 1.8rem;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .results-container {
+        padding: 20px;
+    }
+}

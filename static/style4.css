@@ -1,0 +1,285 @@
+/* Import Google Fonts for a modern and elegant look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Define primary color palette for DARK MODE (Contrast) */
+    --primary-color: #bb86fc; /* Lighter Purple - accessible on dark backgrounds */
+    --secondary-color: #3700b3; /* Darker Purple - deeper accent */
+    --accent-color: #03dac6; /* Teal - for highlights/buttons, good contrast */
+    --text-color: #e0e0e0; /* Light Grey for readability on dark background */
+    --light-text-color: #b0b0b0; /* Slightly darker light grey for secondary text */
+    --background-color: #121212; /* Very dark background */
+    --card-background: #1e1e1e; /* Slightly lighter dark for cards/boxes */
+    --border-color: #333333; /* Dark grey for subtle borders */
+    --success-color: #66bb6a; /* Green for success messages - adjusted for dark mode */
+    --error-color: #ef5350; /* Red for error messages - adjusted for dark mode */
+
+    /* Define font families */
+    --heading-font: 'Poppins', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+
+    /* Spacing and border-radius (Repetition) */
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Darker shadow for dark mode */
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color); /* Dark background */
+    color: var(--text-color); /* Light text for readability */
+    display: flex;
+    flex-direction: column; /* For footer at the bottom */
+    min-height: 100vh; /* Ensure footer stays at bottom */
+    font-size: 16px;
+}
+
+/* Container for main content (Alignment & Proximity) */
+.container {
+    max-width: 900px;
+    margin: var(--spacing-lg) auto; /* Center the container */
+    padding: var(--spacing-lg);
+    background-color: var(--card-background); /* Slightly lighter dark for cards */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    flex-grow: 1; /* Allows container to take available space */
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+/* Headings (Contrast & Repetition) */
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-color); /* Lighter purple for emphasis */
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5em; /* Larger for main title */
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(187, 134, 252, 0.3); /* Subtle glow for title */
+}
+
+h2.results-title {
+    font-size: 1.8em;
+    color: var(--text-color); /* Default text color */
+    border-bottom: 2px solid var(--border-color); /* Subtle border */
+    padding-bottom: 10px;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Forms (Proximity & Alignment) */
+form {
+    background-color: var(--card-background); /* Same as card background */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--light-text-color); /* Slightly muted label color */
+    font-size: 1.1em;
+}
+
+form input[type="file"],
+form select,
+form textarea {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color); /* Subtle border */
+    border-radius: var(--border-radius);
+    font-family: var(--body-font);
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+    background-color: #2a2a2a; /* Slightly lighter input background */
+    color: var(--text-color); /* Light text for input */
+}
+
+form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+form input[type="submit"] {
+    background-color: var(--primary-color); /* Lighter purple for primary action */
+    color: var(--background-color); /* Dark text on light button */
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    display: block; /* Make button full width for better alignment */
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(187, 134, 252, 0.4); /* Glow on button */
+}
+
+form input[type="submit"]:hover {
+    background-color: #a46edc; /* Slightly darker purple on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 10px rgba(187, 134, 252, 0.6); /* More prominent glow */
+}
+
+form input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(187, 134, 252, 0.4);
+}
+
+/* Results Display (Proximity & Contrast) */
+.results-container {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--card-background); /* Slightly lighter dark */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    min-height: 80px; /* Give some initial height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+.result-box {
+    width: 100%;
+}
+
+.results-container h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.result-card {
+    background-color: var(--secondary-color); /* Darker purple for card background */
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    margin: 10px auto; /* Center individual cards */
+    max-width: 350px; /* Increased width for better readability in dark mode */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--primary-color); /* Stronger border for emphasis */
+}
+
+.result-card p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--text-color); /* Light text on dark card */
+}
+
+.result-card .result-value {
+    color: var(--accent-color); /* Teal for values, strong contrast */
+    font-weight: 700;
+}
+
+
+.result-description {
+    font-size: 1.1em;
+    color: var(--light-text-color); /* Muted text color */
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+/* Specific styling for error/success messages */
+.error {
+    color: var(--error-color); /* Adjusted red for dark mode */
+    font-weight: 600;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Specific styling for prediction text */
+.result-box strong[style*="color: red"] { /* Targeting the inline style for Spam */
+    color: var(--error-color) !important; /* Override with dark mode red */
+}
+
+.result-box strong[style*="color: green"] { /* Targeting the inline style for Non-Spam */
+    color: var(--success-color) !important; /* Override with dark mode green */
+}
+
+
+/* Footer (Repetition & Alignment) */
+footer {
+    margin-top: var(--spacing-lg);
+    padding: 20px;
+    background-color: var(--secondary-color); /* Darker purple for footer */
+    color: var(--light-text-color); /* Muted text color */
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color); /* Subtle border */
+}
+
+.footer-container p {
+    margin: 0;
+}
+
+/* --- Responsive Design (Adaptability for smaller screens) --- */
+@media (max-width: 768px) {
+    .container {
+        margin: var(--spacing-md) auto;
+        padding: var(--spacing-md);
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2.results-title {
+        font-size: 1.5em;
+    }
+
+    form input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .result-card {
+        padding: 8px 12px;
+        font-size: 0.95em;
+        max-width: 90%; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px; /* Slightly smaller base font for very small screens */
+    }
+    .container {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 15px; /* Add more side margin for very small screens */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2.results-title {
+        font-size: 1.3em;
+    }
+
+    form label {
+        font-size: 1em;
+    }
+
+    .result-description, .result-card p {
+        font-size: 1em;
+    }
+}

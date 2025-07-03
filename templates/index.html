@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style2.css">
+    <title>Email Spam Classifier</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Title -->
+        <h1>Email Spam Classifier</h1>
+
+        <!-- Form for Training Model -->
+        <form id="trainForm" enctype="multipart/form-data">
+            <h2 class="results-title">Training</h2>
+            <label for="file">Upload CSV File :</label>
+            <input type="file" id="file" name="file" accept=".csv" required>
+            <label for="model_type">Choose Algorithm :</label>
+            <select id="model_type" name="model_type" required>
+                <option value="naive_bayes">Naive Bayes</option>
+                <option value="rbf">RBF Neural Network</option>
+            </select>
+            <input type="submit" value="Train Model">
+        </form>
+
+        <!-- Training Results -->
+        <div class="results-container">
+            <div id="trainResults" class="result-box"></div>
+        </div>
+
+        <!-- Form for Prediction -->
+        <form id="predictForm">
+            <h2 class="results-title">Classification</h2>
+            <label for="text">Email Text :</label>
+            <textarea id="text" name="text" rows="5" required></textarea>
+            <input type="submit" value="Classify Now">
+        </form>
+
+        <!-- Prediction Results -->
+        <div class="results-container">
+            <div id="predictResults" class="result-box"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Shdyt.s - Science Data Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const modelMap = {
+            naive_bayes: "Naive Bayes",
+            rbf: "RBF Neural Network"
+        };
+
+        document.getElementById('trainForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            try {
+                const response = await fetch('/train', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    const trainResults = document.getElementById('trainResults');
+                    const modelDisplayName = modelMap[result.model] || result.model;
+                    trainResults.innerHTML = `
+                        <div style="text-align: center;">
+                            <h3>Training Results :</h3>
+                            <div class="result-box">
+                                <div class="result-card">
+                                    <p class="result-value">Model : ${modelDisplayName}</p>
+                                </div>
+                                <div class="result-card">
+                                    <p class="result-value">Accuracy : ${(result.accuracy * 100).toFixed(2)}%</p>
+                                </div>
+                                <div class="result-card">
+                                    <p class="result-value">Precision : ${(result.precision * 100).toFixed(2)}%</p>
+                                </div>
+                                <div class="result-card">
+                                    <p class="result-value">Recall : ${(result.recall * 100).toFixed(2)}%</p>
+                                </div>
+                                <div class="result-card">
+                                    <p class="result-value">F1-Score : ${(result.f1_score * 100).toFixed(2)}%</p>
+                                </div>
+                            </div>
+                            <p class="result-description">Model ${modelDisplayName} berhasil dilatih dan siap digunakan untuk memprediksi email!</p>
+                        </div>
+                    `;
+                } else {
+                    const trainResults = document.getElementById('trainResults');
+                    trainResults.innerHTML = `<p class="error">${result.error}</p>`;
+                }
+            } catch (error) {
+                const trainResults = document.getElementById('trainResults');
+                trainResults.innerHTML = `<p class="error">Terjadi kesalahan saat melatih model. Silakan coba lagi nanti!</p>`;
+            }
+        });
+
+        document.getElementById('predictForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    const predictResults = document.getElementById('predictResults');
+                    const modelDisplayName = modelMap[result.model] || result.model;
+                    const predictionText = result.prediction === "Spam"
+                        ? `<strong style="color: red;">Spam</strong>`
+                        : `<strong style="color: green;">Non-Spam</strong>`;
+                    const descriptionText = result.prediction === "Spam"
+                        ? `Email ini diklasifikasikan sebagai ${predictionText} berdasarkan model ${modelDisplayName}. Berhati-hatilah!`
+                        : `Email ini diklasifikasikan sebagai ${predictionText} berdasarkan model ${modelDisplayName}. Email ini aman.`;
+
+                    const accuracyText = `Classification Confidence : ${result.accuracy_percentage.toFixed(2)}%`;
+
+                    predictResults.innerHTML = `
+                        <div style="text-align: center;">
+                            <h3>Classification Results :</h3>
+                            <p class="result-description">${descriptionText}</p>
+                            <p class="result-description">${accuracyText}</p>
+                        </div>
+                    `;
+                } else {
+                    const predictResults = document.getElementById('predictResults');
+                    predictResults.innerHTML = `<p class="error">${result.error}</p>`;
+                }
+            } catch (error) {
+                const predictResults = document.getElementById('predictResults');
+                predictResults.innerHTML = `<p class="error">Terjadi kesalahan saat melakukan klasifikasi. Silakan coba lagi nanti!</p>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

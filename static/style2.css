@@ -1,0 +1,329 @@
+/* Email Spam Classifier - Dark Theme CSS */
+/* Menggunakan prinsip CRAP: Contrast, Repetition, Alignment, Proximity */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #26004d 50%, #2e0056 100%);
+    color: #e0e6ed;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* HEADER STYLING */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #a1cdff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, #ffffff 0%, #a1cdff 100%);
+    border-radius: 2px;
+}
+
+h2.results-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-weight: 600;
+    border-left: 4px solid #afbeff;
+    padding-left: 15px;
+}
+
+/* FORM STYLING */
+form {
+    background: rgba(49, 0, 102, 0.6);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgb(169, 169, 169);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-color: rgba(250, 250, 250, 0.737);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #b8c6db;
+    font-size: 1.1rem;
+}
+
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    background: rgba(20, 25, 45, 0.8);
+    color: #e0e6ed;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+    background: rgba(20, 25, 45, 1);
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #1e223c;
+    color: #e0e6ed;
+    padding: 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Courier New', monospace;
+}
+
+/* BUTTON STYLING */
+input[type="submit"] {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #bfcbfe 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+input[type="submit"]:hover::before {
+    left: 100%;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #7c8fe8 0%, #8557a5 100%);
+}
+
+input[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* RESULTS STYLING */
+.results-container {
+    margin-bottom: 40px;
+}
+
+.result-box {
+    background: rgba(30, 34, 60, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    animation: fadeInUp 0.6s ease;
+}
+
+.result-card {
+    background: rgba(20, 25, 45, 0.6);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #e0e6ed;
+    margin: 0;
+}
+
+.result-description {
+    font-size: 1.1rem;
+    color: #b8c6db;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+h3 {
+    color: #667eea;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* ERROR STYLING */
+.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* FOOTER STYLING */
+footer {
+    background: rgba(15, 15, 30, 0.9);
+    border-top: 1px solid rgba(102, 126, 234, 0.2);
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+footer p {
+    color: #8892b0;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+    
+    form {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .result-box {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    input[type="submit"] {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    form {
+        padding: 20px;
+    }
+    
+    input[type="file"],
+    select,
+    textarea {
+        padding: 12px 15px;
+    }
+}
